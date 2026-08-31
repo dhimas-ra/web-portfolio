@@ -198,6 +198,35 @@
     display:flex; align-items:center; justify-content:center; font-size:18px; margin:0 auto 10px; color:var(--accent);
   }
 
+  /* Ubah Grid menjadi pembungkus Flexbox yang bisa di-scroll */
+.projects-grid {
+  display: flex;
+  gap: 1.5rem; /* Jarak antar card */
+  overflow-x: auto; /* Kunci utamanya: bikin scroll ke samping */
+  padding: 1rem 0.5rem 2rem 0.5rem; /* PENTING: Biar bayangan shadow clay/neumorphism lu nggak kepotong! */
+  scroll-snap-type: x mandatory; /* Bikin efek snap (berhenti pas) kayak di HP */
+  -webkit-overflow-scrolling: touch; /* Biar smooth scroll di layar sentuh */
+}
+
+/* Mengatur ukuran card biar nggak menciut */
+.projects-grid .card {
+  flex: 0 0 320px; /* Angka 320px bisa lu sesuaikan. Card nggak akan mengecil dari ukuran ini */
+  scroll-snap-align: center; /* Pas di-scroll, card-nya otomatis ke tengah */
+  /* Sisa styling background, border-radius, dan box-shadow lu biarin aja tetep sama */
+}
+
+/* (Opsional) Bikin scrollbar-nya lebih tipis dan elegan ala Mac */
+.projects-grid::-webkit-scrollbar {
+  height: 8px; 
+}
+.projects-grid::-webkit-scrollbar-track {
+  background: transparent; 
+}
+.projects-grid::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1; /* Sesuaikan warnanya sama tema web lu */
+  border-radius: 10px;
+}
+
   /* contact */
   .contact-box{
     background:var(--ink); color:#fff; border-radius:16px; padding:44px 36px;
